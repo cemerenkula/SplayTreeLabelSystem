@@ -17,9 +17,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89ec1b31-7d44-414a-b09c-3ae4aee6edc8" name="Changes" comment="First">
+    <list default="true" id="89ec1b31-7d44-414a-b09c-3ae4aee6edc8" name="Changes" comment="Added label and viewed txt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SplayTreeLabelSystem.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SplayTreeLabelSystem.dir/main.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SplayTreeLabelSystem.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/SplayTreeLabelSystem.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +62,11 @@
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Git\SplayTreeLabelSystem\cmake-build-debug" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="SplayTreeLabelSystem" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="SplayTreeLabelSystem" TARGET_NAME="SplayTreeLabelSystem" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="SplayTreeLabelSystem" RUN_TARGET_NAME="SplayTreeLabelSystem">
       <method v="2">
@@ -74,7 +84,8 @@
       <updated>1686168377348</updated>
       <workItem from="1686168392854" duration="261000" />
       <workItem from="1686168664690" duration="4000" />
-      <workItem from="1686168706068" duration="1000" />
+      <workItem from="1686168706068" duration="3357000" />
+      <workItem from="1686172099234" duration="6405000" />
     </task>
     <task id="LOCAL-00001" summary="First">
       <created>1686168441253</created>
@@ -83,7 +94,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686168441253</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added label and viewed txt">
+      <created>1686168788001</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1686168788001</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added label and viewed txt">
+      <created>1686168806872</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1686168806872</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +127,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First" />
-    <option name="LAST_COMMIT_MESSAGE" value="First" />
+    <MESSAGE value="Added label and viewed txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added label and viewed txt" />
   </component>
 </project>

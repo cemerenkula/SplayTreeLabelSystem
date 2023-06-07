@@ -13,42 +13,50 @@ struct Node* search(struct Node* root, int label);
 struct Node* splay(struct Node* root, int label);
 struct Node* zag_rotate(struct Node* x);
 struct Node* zig_rotate(struct Node* x);
-void preorder(struct Node* root);
+void preorder(struct Node* root, FILE* output_txt);
 void freeTree(struct Node* root);
 
 struct Node* createNode(int label) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->label = label;
-    newNode->left = newNode->right = NULL;
+    newNode->left = NULL;
+    newNode->right = NULL;
     return newNode;
 }
 
 struct Node* insert(struct Node* root, int label) {
+    // If the tree is empty, create a new node and return it as the root
     if (root == NULL)
         return createNode(label);
 
+    // Splay the tree to bring the closest node to the root
     root = splay(root, label);
 
+    // If the label is already present, return the root
+    if (root->label == label)
+        return root;
+
+    // Create a new node
+    struct Node* newNode = createNode(label);
+
+    // If the label is less than the root's label, make the new node the left child
+    // and the root's left child the left child of the new node
     if (label < root->label) {
-        struct Node* newNode = createNode(label);
+        newNode->right = root;
         newNode->left = root->left;
         root->left = NULL;
-        newNode->right = root;
-        return newNode;
     }
-    else if (label > root->label) {
-        struct Node* newNode = createNode(label);
+        // If the label is greater than the root's label, make the new node the right child
+        // and the root's right child the right child of the new node
+    else {
+        newNode->left = root;
         newNode->right = root->right;
         root->right = NULL;
-        newNode->left = root;
-        return newNode;
     }
-    else {
-        return root;
-    }
+
+    // Set the new node as the root
+    return newNode;
 }
-
-
 
 
 struct Node* zag_rotate(struct Node* x) {
@@ -65,55 +73,78 @@ struct Node* zig_rotate(struct Node* x) {
     return y;
 }
 
-struct Node* splay(struct Node* root, int label) {
+struct Node *splay(struct Node *root, int label) {
+    // root is NULL or label is present at root
     if (root == NULL || root->label == label)
         return root;
 
-    if (label < root->label) {
+    // label is in left subtree
+    if (root->label > label) {
+        // label is not in tree
         if (root->left == NULL)
             return root;
 
-        if (label < root->left->label) {
+        // Zig-Zig
+        if (root->left->label > label) {
+            // First recursively bring the label as root of left-left
             root->left->left = splay(root->left->left, label);
-            if (root->left->left != NULL)
-                root = zig_rotate(root);
+
+            // Do first rotation for root
+            root = zig_rotate(root);
         }
-        else if (label > root->left->label) {
+        // Zig-Zag
+        else if (root->left->label < label){
+            // First recursively bring the label as root of left-right
             root->left->right = splay(root->left->right, label);
+
+            // Do first rotation for root->left
             if (root->left->right != NULL)
                 root->left = zag_rotate(root->left);
         }
 
+        // Do second rotation for root
         return (root->left == NULL) ? root : zig_rotate(root);
     }
-    else {
+    // label is in right subtree
+    else{
+        // label is not in tree
         if (root->right == NULL)
             return root;
 
-        if (label < root->right->label) {
+        // Zag-Zig
+        if (root->right->label > label) {
+            // Bring the label as root of right-left
             root->right->left = splay(root->right->left, label);
+
+            // Do first rotation for root->right
             if (root->right->left != NULL)
                 root->right = zig_rotate(root->right);
         }
-        else if (label > root->right->label) {
+        // Zag-Zag
+        else if (root->right->label < label){
+            // Bring the label as root of right-right and do first rotation
             root->right->right = splay(root->right->right, label);
-            if (root->right->right != NULL)
-                root = zag_rotate(root);
+            root = zag_rotate(root);
         }
 
+        // Do second rotation for root
         return (root->right == NULL) ? root : zag_rotate(root);
     }
 }
 
 struct Node* search(struct Node* root, int label) {
-    return splay(root, label);
+    root = splay(root, label);
+    if (root->label != label)
+        printf("Node %d does not exist\n", label);
+    return root;
 }
 
-void preorder(struct Node* root) {
+void preorder(struct Node* root, FILE* output_txt) {
     if (root != NULL) {
-        printf("%d ", root->label);
-        preorder(root->left);
-        preorder(root->right);
+        printf(" %d -", root->label);
+        fprintf(output_txt, " %d -", root->label);
+        preorder(root->left, output_txt);
+        preorder(root->right, output_txt);
     }
 }
 
@@ -126,11 +157,21 @@ void freeTree(struct Node* root) {
 }
 
 int main() {
-    char inputFileName[100], viewedFileName[100], outputFileName[100];
-    printf("Enter the name of the input file containing the label numbers of the products: ");
-    scanf("%s", inputFileName);
+    char labelsFileName[50], viewedFileName[50];
+    FILE* output_txt;
+    output_txt = fopen("output.txt", "w");
+    if (output_txt == NULL) {
+        printf("Failed to open output file.\n");
+        return 1;
+    }
 
-    FILE* inputFile = fopen(inputFileName, "r");
+    fprintf(output_txt, "Input file for label numbers:");
+    printf("Input file for label numbers:");
+    scanf("%s", labelsFileName);
+    fprintf(output_txt, "\n");
+    printf("\n");
+
+    FILE* inputFile = fopen(labelsFileName, "r");
     if (inputFile == NULL) {
         printf("Failed to open the input file.\n");
         return 1;
@@ -141,19 +182,21 @@ int main() {
 
     while (fscanf(inputFile, "%d", &label) == 1) {
         root = insert(root, label);
-        preorder(root);
+        printf("Tree:");
+        fprintf(output_txt, "Tree: ");
+        preorder(root, output_txt);
         printf("\n");
-        // Save preorder traversal to a txt file
+        fprintf(output_txt, "\n");
     }
 
     fclose(inputFile);
 
-    preorder(root);
-    printf("\n");
-    // Save final preorder traversal to a txt file
 
-    printf("Enter the name of the input file containing the label numbers viewed by customers: ");
+    printf("Input file for viewed products:");
+    fprintf(output_txt, "Input file for viewed products:");
     scanf("%s", viewedFileName);
+    fprintf(output_txt, "\n");
+    printf("\n");
 
     FILE* viewedFile = fopen(viewedFileName, "r");
     if (viewedFile == NULL) {
@@ -169,16 +212,12 @@ int main() {
         else
             root = result;
 
-        preorder(root);
+        preorder(root, output_txt);
         printf("\n");
-        // Save preorder traversal to a txt file
+        fprintf(output_txt, "\n");
     }
 
     fclose(viewedFile);
-
-    preorder(root);
-    printf("\n");
-    // Save final preorder traversal to a txt file
 
     freeTree(root);
 
