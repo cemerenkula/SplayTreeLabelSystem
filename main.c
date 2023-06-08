@@ -92,7 +92,7 @@ struct Node *splay(struct Node *root, int label) {
             // Do first rotation for root
             root = zig_rotate(root);
         }
-        // Zig-Zag
+            // Zig-Zag
         else if (root->left->label < label){
             // First recursively bring the label as root of left-right
             root->left->right = splay(root->left->right, label);
@@ -105,8 +105,8 @@ struct Node *splay(struct Node *root, int label) {
         // Do second rotation for root
         return (root->left == NULL) ? root : zig_rotate(root);
     }
-    // label is in right subtree
-    else{
+        // label is in right subtree
+    else {
         // label is not in tree
         if (root->right == NULL)
             return root;
@@ -120,8 +120,8 @@ struct Node *splay(struct Node *root, int label) {
             if (root->right->left != NULL)
                 root->right = zig_rotate(root->right);
         }
-        // Zag-Zag
-        else if (root->right->label < label){
+            // Zag-Zag
+        else if (root->right->label < label) {
             // Bring the label as root of right-right and do first rotation
             root->right->right = splay(root->right->right, label);
             root = zag_rotate(root);
@@ -141,12 +141,23 @@ struct Node* search(struct Node* root, int label) {
 
 void preorder(struct Node* root, FILE* output_txt) {
     if (root != NULL) {
-        printf(" %d -", root->label);
-        fprintf(output_txt, " %d -", root->label);
-        preorder(root->left, output_txt);
-        preorder(root->right, output_txt);
+        printf(" %d", root->label);
+        fprintf(output_txt, " %d", root->label);
+
+        if (root->left != NULL) {
+            printf(" -");
+            fprintf(output_txt, " -");
+            preorder(root->left, output_txt);
+        }
+
+        if (root->right != NULL) {
+            printf(" -");
+            fprintf(output_txt, " -");
+            preorder(root->right, output_txt);
+        }
     }
 }
+
 
 void freeTree(struct Node* root) {
     if (root != NULL) {

@@ -17,13 +17,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89ec1b31-7d44-414a-b09c-3ae4aee6edc8" name="Changes" comment="Added label and viewed txt">
+    <list default="true" id="89ec1b31-7d44-414a-b09c-3ae4aee6edc8" name="Changes" comment="output still wrong but format correction">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SplayTreeLabelSystem.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SplayTreeLabelSystem.dir/main.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/SplayTreeLabelSystem.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/SplayTreeLabelSystem.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/output.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +86,7 @@
       <workItem from="1686168392854" duration="261000" />
       <workItem from="1686168664690" duration="4000" />
       <workItem from="1686168706068" duration="3357000" />
-      <workItem from="1686172099234" duration="6405000" />
+      <workItem from="1686172099234" duration="7887000" />
     </task>
     <task id="LOCAL-00001" summary="First">
       <created>1686168441253</created>
@@ -108,7 +109,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686168806872</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="output still wrong but format correction">
+      <created>1686181122992</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1686181122992</updated>
+    </task>
+    <task id="LOCAL-00005" summary="output still wrong but format correction">
+      <created>1686181132311</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1686181132311</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,6 +143,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First" />
     <MESSAGE value="Added label and viewed txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added label and viewed txt" />
+    <MESSAGE value="output still wrong but format correction" />
+    <option name="LAST_COMMIT_MESSAGE" value="output still wrong but format correction" />
   </component>
 </project>
